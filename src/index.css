@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ============================================
+   Portly | Platform — Design System
+   ============================================ */
+
+@theme {
+  /* Color Palette */
+  --color-background: #0D0704;
+  --color-section-tone: #1F1208;
+  --color-card-bg: #2A1A10;
+  --color-primary-text: #E8E6E3;
+  --color-accent: #C8A96B;
+  --color-on-accent: #0D0704;
+  --color-surface-high: #362519;
+  --color-surface-highest: #423124;
+  --color-surface-lowest: #080402;
+  --color-green-accent: #8FB399;
+
+  /* Font Families */
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Work Sans", sans-serif;
+  --font-label: "Work Sans", sans-serif;
+
+  /* Border Radius */
+  --radius-DEFAULT: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+/* ============================================
+   Material Symbols Icons
+   ============================================ */
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ============================================
+   Custom Utility Classes
+   ============================================ */
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.signature-font {
+  font-family: serif;
+  font-style: italic;
+}
+
+.tonal-gradient {
+  background: linear-gradient(180deg, #0D0704 0%, #1F1208 100%);
+}
+
+.glass-card {
+  backdrop-filter: blur(24px);
+  background: rgba(13, 7, 4, 0.7);
+}
+
+.grid-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(200, 169, 107, 0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.scroll-path {
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #C8A96B, transparent);
+}
+
+/* ============================================
+   Gallery Hover Animations (CSS-based)
+   ============================================ */
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   Admin Sidebar Active State
+   ============================================ */
+
+.sidebar-active {
+  color: #C8A96B;
+  border-right: 2px solid #C8A96B;
+  background-color: #1F1208;
+}
+
+/* ============================================
+   Form Focus Styles
+   ============================================ */
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(232, 230, 227, 0.3);
+}
+
+/* ============================================
+   Scrollbar Styling (Premium)
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0704;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A1A10;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A96B;
+}
+
+/* ============================================
+   Category Pill — Design Project Tags
+   ============================================ */
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(200, 169, 107, 0.3);
+  background-color: rgba(200, 169, 107, 0.08);
+  color: #C8A96B;
+  font-family: var(--font-label);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   Block Renderer — Content spacing
+   ============================================ */
+
+.block-section {
+  margin-bottom: 5rem;
+}
+
+/* ============================================
+   Gallery Hover Corrections
+   ============================================ */
+
+.gallery-item .gallery-overlay {
+  transition: opacity 0.4s ease;
+}
