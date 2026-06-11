@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { fetchUserProjects, deleteProject } from '../../firebase/services/projectService'
-import { doc, deleteDoc } from 'firebase/firestore'
-import { db } from '../../firebase/config'
-import { deleteUser } from 'firebase/auth'
+import { fetchUserProjects, deleteProject } from '../../supabase/services/projectService'
+import { deleteUserDocs } from '../../supabase/services/userService'
+import { deleteUserAccount } from '../../supabase/services/authService'
 
 export default function SettingsTab() {
   const { user, profile } = useAuth()
@@ -24,19 +23,11 @@ export default function SettingsTab() {
         await deleteProject(p.id)
       }
 
-      // 2. Delete portfolio settings
-      await deleteDoc(doc(db, "portfolioSettings", user.uid))
+      // 2 & 3. Delete user doc & portfolio settings (and username implicitly since it's in users table)
+      await deleteUserDocs(user.uid)
 
-      // 3. Delete username (if profile exists)
-      if (profile?.username) {
-        await deleteDoc(doc(db, "usernames", profile.username))
-      }
-
-      // 4. Delete user doc
-      await deleteDoc(doc(db, "users", user.uid))
-
-      // 5. Delete Auth user
-      await deleteUser(user)
+      // 4. Delete Auth user / Sign out
+      await deleteUserAccount()
 
       toast.success('Account deleted successfully', { id: tid })
       navigate('/')

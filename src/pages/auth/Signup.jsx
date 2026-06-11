@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { signupWithEmail, loginWithGoogle } from '../../firebase/services/authService';
+import { signupWithEmail, loginWithGoogle } from '../../supabase/services/authService';
 
 export default function Signup() {
   const [email, setEmail] = useState('');

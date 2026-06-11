@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
-import { getUserByUsername } from '../firebase/services/userService'
-import { getProjectBySlug, getUserPublishedProjectsPage } from '../firebase/services/projectService'
+import { getUserByUsername } from '../supabase/services/userService'
+import { getProjectBySlug, getUserPublishedProjectsPage } from '../supabase/services/projectService'
 import InteractiveBentoGallery from '../components/blocks/interactive-bento-gallery'
 
 // ── Block renderers ────────────────────────────────────────────────────────────

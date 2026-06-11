@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { subscribeToAuthChanges } from "../firebase/services/authService";
-import { getUserProfile } from "../firebase/services/userService";
+import { subscribeToAuthChanges, getAuthSession } from '../supabase/services/authService';
+import { getUserProfile } from '../supabase/services/userService';
 
 const AuthContext = createContext({ user: null, loading: true, profile: null });
 
@@ -12,11 +12,37 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = subscribeToAuthChanges(async (firebaseUser) => {
-      setUser(firebaseUser);
-      if (firebaseUser) {
+    let mounted = true;
+
+    // Fetch initial session
+    const initSession = async () => {
+      try {
+        const { user: initialUser } = await getAuthSession();
+        if (mounted) {
+          setUser(initialUser);
+          if (initialUser) {
+            const userProfile = await getUserProfile(initialUser.uid);
+            setProfile(userProfile);
+          } else {
+            setProfile(null);
+          }
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Error checking auth session:", error);
+        if (mounted) setLoading(false);
+      }
+    };
+
+    initSession();
+
+    // Subscribe to auth changes
+    const unsubscribe = subscribeToAuthChanges(async (supabaseUser) => {
+      if (!mounted) return;
+      setUser(supabaseUser);
+      if (supabaseUser) {
         try {
-          const userProfile = await getUserProfile(firebaseUser.uid);
+          const userProfile = await getUserProfile(supabaseUser.uid);
           setProfile(userProfile);
         } catch (error) {
           console.error("Error fetching user profile in auth context:", error);
@@ -28,7 +54,10 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     });
 
-    return () => unsubscribe();
+    return () => {
+      mounted = false;
+      unsubscribe();
+    };
   }, []);
 
   return (

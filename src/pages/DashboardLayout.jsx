@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { logoutUser } from '../firebase/services/authService'
+import { logoutUser } from '../supabase/services/authService'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate, Outlet, useLocation, Link, NavLink } from 'react-router-dom'
 

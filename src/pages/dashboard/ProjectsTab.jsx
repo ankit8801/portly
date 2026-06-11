@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { fetchUserProjects, deleteProject } from '../../firebase/services/projectService'
+import { fetchUserProjects, deleteProject } from '../../supabase/services/projectService'
 import { useAuth } from '../../context/AuthContext'
 import ProjectModal from '../../components/ProjectModal'
 import { toast } from 'react-hot-toast'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { createProject, updateProject } from '../firebase/services/projectService';
-import { uploadFile } from '../firebase/services/storageService';
+import { createProject, updateProject } from '../supabase/services/projectService';
+import { uploadFile } from '../supabase/services/storageService';
 import { useAuth } from '../context/AuthContext';
 import ImageCropModal from './ImageCropModal';
 import { compressImage } from '../utils/cropImage';

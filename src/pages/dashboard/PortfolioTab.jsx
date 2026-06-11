@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { getPortfolioSettings, updatePortfolioSettings } from '../../firebase/services/userService'
-import { uploadFile } from '../../firebase/services/storageService'
+import { getPortfolioSettings, updatePortfolioSettings } from '../../supabase/services/userService'
+import { uploadFile } from '../../supabase/services/storageService'
 import { useAuth } from '../../context/AuthContext'
 import ImageCropModal from '../../components/ImageCropModal'
 

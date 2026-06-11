@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
-import { getUsersPage } from '../firebase/services/userService'
+import { getUsersPage } from '../supabase/services/userService'
 
 export default function ExploreCreators() {
   const [creators, setCreators] = useState([])

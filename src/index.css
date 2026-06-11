@@ -7,9 +7,12 @@
 @theme {
   /* Color Palette */
   --color-background: #0D0704;
+  --color-foreground: #E8E6E3;
+  --color-primary-text: #E8E6E3;
+  --color-secondary: #1F1208;
+  --color-border: #423124;
   --color-section-tone: #1F1208;
   --color-card-bg: #2A1A10;
-  --color-primary-text: #E8E6E3;
   --color-accent: #C8A96B;
   --color-on-accent: #0D0704;
   --color-surface-high: #362519;

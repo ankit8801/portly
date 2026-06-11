@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { Helmet } from 'react-helmet-async'
 import React, { useState, useEffect, useRef } from 'react'
-import { getPublishedProjectsPage } from '../firebase/services/projectService'
-import { getUsersPage } from '../firebase/services/userService'
+import { getPublishedProjectsPage } from '../supabase/services/projectService'
+import { getUsersPage } from '../supabase/services/userService'
 
 export default function Home() {
   const customEase = [0.16, 1, 0.3, 1]

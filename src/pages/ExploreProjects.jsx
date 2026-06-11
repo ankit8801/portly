@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
-import { getPublishedProjectsPage } from '../firebase/services/projectService'
-import { getUserProfile } from '../firebase/services/userService'
+import { getPublishedProjectsPage } from '../supabase/services/projectService'
+import { getUserProfile } from '../supabase/services/userService'
 
 export default function ExploreProjects() {
   const [projects, setProjects] = useState([])

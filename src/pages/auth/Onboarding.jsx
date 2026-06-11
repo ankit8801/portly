@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { checkUsernameAvailable, createUserProfile } from '../../firebase/services/userService';
+import { checkUsernameAvailable, createUserProfile } from '../../supabase/services/userService';
 
 export default function Onboarding() {
   const { user, profile, loading } = useAuth();
